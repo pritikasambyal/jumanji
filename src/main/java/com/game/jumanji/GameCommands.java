@@ -34,7 +34,7 @@ public class GameCommands {
      * 		shell:> roll
      */
     @ShellMethod("Roll Dice.")
-    public String rollDice() {
+    public String roll() {
       if(userReg) {
 
           HashMap<Integer, List<Question>> questionaire = setUpQuestionare();
