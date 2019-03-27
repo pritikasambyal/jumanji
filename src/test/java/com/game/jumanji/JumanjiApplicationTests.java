@@ -29,5 +29,13 @@ public class JumanjiApplicationTests {
 		assert result.contains("rolledValue is");
 	}
 
-
+	@Test
+	public void testGuide() {
+		// setup
+		GameCommands gc = new GameCommands();
+		// run
+		String actual = gc.guide();
+		// assert
+		assert actual.startsWith("\nCommands");
+	}
 }

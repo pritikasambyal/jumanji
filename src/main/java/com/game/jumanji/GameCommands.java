@@ -22,7 +22,7 @@ public class GameCommands {
 	/*
 	 * 'start' command to launch a new game. The player must use the start command
 	 * to start a new game. Example:
-	 * 
+	 *
 	 * shell:> start my-name
 	 */
 	@ShellMethod("Start Game.")
@@ -34,7 +34,7 @@ public class GameCommands {
 
 	/*
 	 * 'roll' command to roll the dice. Example:
-	 * 
+	 *
 	 * shell:> roll
 	 */
 	@ShellMethod("Roll Dice.")
@@ -56,12 +56,55 @@ public class GameCommands {
 	}
     @ShellMethod("answer with option no.")
     public String answer(@ShellOption String option){
-        return jumanjiService.checkAnswer(option);
+        try {
+            return jumanjiService.checkAnswer(option);
+        } catch (Exception ex) {
+            return "\nOops, something went wrong!\n" + guide();
+        }
     }
 
     @ShellMethod("return score.")
-    public Integer score(){
-        return jumanjiService.getPlayerScore();
+    public String score(){
+        try {
+            return String.valueOf(jumanjiService.getPlayerScore());
+        } catch (Exception ex) {
+            return "\nOops, something went wrong!\n" + guide();
+        }
+    }
+
+    @ShellMethod("guide")
+    public String guide() {
+        return
+                "\n"
+            +   "Commands:\n"
+            +   "   start <player-name>     # start a new game\n"
+            +   "   roll                    # roll the dice toget your next question\n"
+            +   "   answer <choice>         # answer the current question\n"
+            +   "   score                   # show your current score\n"
+            +   "   exit                    # exit the game\n"
+            +   "\n"
+            +   "Example game:\n"
+            +   "   shell:>start john\n"
+            +   "    Welcome to the Jumanji john!\n"
+            +   "   shell:>roll\n"
+            +   "    rolledValue is 5\n"
+            +   "    Category - COUNTRY\n"
+            +   "    Question - 'WHICH CITY IS HOME TO NORTH AMERICA’S LARGEST MALL?'\n"
+            +   "    Options are\n"
+            +   "     [1. Edmonton, Alberta, 2. Toronto, Ontario, 3. Montreal, Quebec]\n"
+            +   "   shell:>answer 2\n"
+            +   "    Wrong Amnswer.\n"
+            +   "    The correct answer is :: 1\n"
+            +   "   shell:>roll\n"
+            +   "    rolledValue is 3\n"
+            +   "    Category - COUNTRY\n"
+            +   "    Question - 'WHICH CITY IS HOME TO NORTH AMERICA’S LARGEST MALL?'\n"
+            +   "    Options are\n"
+            +   "     [1. Edmonton, Alberta, 2. Toronto, Ontario, 3. Montreal, Quebec]\n"
+            +   "   shell:>answer 1\n"
+            +   "    Correct\n"
+            +   "   shell:>exit\n"
+            ;
     }
 
     private  int chooseQuestionNumber() {
