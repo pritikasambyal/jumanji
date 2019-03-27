@@ -3,12 +3,14 @@ package com.game.jumanji.model;
 import java.util.List;
 
 public class Question {
+    private Category category;
     private String question;
     private List<String> options;
     private String answer;
 
 
-    public Question( String question, List<String> options, String answer) {
+    public Question(Category category,  String question, List<String> options, String answer) {
+        this.category = category;
         this.question = question;
         this.options = options;
         this.answer = answer;
@@ -36,9 +38,9 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
-                "question='" + question + '\'' +
-                ", options=" + options +
-                '}';
+        return
+                "Category - " + category.name() + "\n" +
+                "Question - '" + question + '\'' + "\n" +
+                "Options are \n " + options ;
     }
 }
