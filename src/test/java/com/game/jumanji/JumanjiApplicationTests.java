@@ -3,6 +3,8 @@ package com.game.jumanji;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.game.jumanji.model.Player;
+import com.game.jumanji.service.JumanjiService;
 import org.junit.Test;
 
 public class JumanjiApplicationTests {
@@ -19,9 +21,13 @@ public class JumanjiApplicationTests {
 		int maxValue = 6;
 		int minValue = 1;
 		GameCommands gc = new GameCommands();
-		int rolledNumber = gc.randomGenerator();
-		assertTrue("Error, random is too high", maxValue >= Integer.valueOf(rolledNumber));
-		assertTrue("Error, random is too low", minValue <= Integer.valueOf(rolledNumber));
+		JumanjiService jumanjiService = new JumanjiService(new Player("abc"));
+
+		gc.start("abc");
+		String result = gc.roll();
+
+		assert result.contains("rolledValue is");
 	}
+
 
 }
