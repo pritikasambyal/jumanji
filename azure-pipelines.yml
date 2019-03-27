@@ -25,8 +25,8 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo' # Options: cobertura, jaCoCo
-    summaryFileLocation: 
-    #reportDirectory: # Optional
+    summaryFileLocation: '**/site/jacoco/jacoco.xml'
+    reportDirectory: '**/site/jacoco/'
     #additionalCodeCoverageFiles: # Optional
     #failIfCoverageEmpty: false # Optional
 
