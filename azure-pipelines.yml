@@ -17,11 +17,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
+    publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'compile'
-
-- script: |
-    echo Starting the Unit TEST
-    mvn clean test
-  displayName: 'Unit Test with Maven'
+    goals: 'package'
