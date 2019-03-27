@@ -26,6 +26,6 @@ public class Player {
     }
 
     public void incrmentScore() {
-        score+= score +5;
+        score= score +5;
     }
 }
